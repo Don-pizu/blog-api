@@ -93,7 +93,7 @@ exports.updatePost = async (req, res, next) => {
 		} 
 
 		//check if accessing user is author or admin
-		const notAuthor = getPost.user.toString() !== req.user._id.toString();
+		const notAuthor = getPost.user.toString() !== req.user._id.toString();  //post owerner  !== the user requesting
 		const notAdmin = req.user.role !== 'admin';
 
 		if (notAuthor && notAdmin ) {

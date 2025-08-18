@@ -6,7 +6,8 @@ const Comment = require('../models/comment');
 //POST make comment
 exports.addComment = async (req, res, next) => {
 	try {
-		const { comment, postId } = req.body;
+		const { comment } = req.body;
+		const { postId } = req.params;
 
 		if (!comment || !postId) {
 			return res.status(400).json({ message: 'Comment and Post Id are required'});
@@ -54,7 +55,7 @@ exports.updateComment = async (req, res, next) => {
 	try {
 		const getComment = await Comment.findById(req.params.id);
 
-		if(!getComment) {
+		if(!getComment || getComment.length === 0) {
 			return res.status(404).json({ message: 'Comment not found'});
 		}
 

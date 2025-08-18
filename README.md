@@ -28,7 +28,8 @@ project-root/
 ├── README.md
 
 -npm install
--npm start
+-node server
+
 
 ## Technologies used
 -Node.js
