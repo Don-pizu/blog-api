@@ -15,6 +15,9 @@ exports.makePost = async (req, res, next) => {
 			return res.status(400).json({ message: 'Title and Content are required'});
 		}
 
+		 if (!user) {
+	      return res.status(401).json({ message: 'User not authenticated' });
+	    }
 
 		//fetch user data
 		const dbUser = await User.findById(user._id);
@@ -36,7 +39,8 @@ exports.makePost = async (req, res, next) => {
 		});
 
 	} catch (err) {
-    	res.status(500).json({ message: 'Internal server error' });
+		console.error("Post creation error:", err);
+    	res.status(500).json({ message: err.message || 'Internal server error' });
 	}
 };
 

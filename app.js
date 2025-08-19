@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const sanitize = require('mongo-sanitize');
 const xss = require('xss-clean');
+const { swaggerUi, swaggerSpec } = require('./swagger');
 
 const authRoutes = require('./routes/authRoutes');
 const protectedRoutes = require('./routes/protectedRoutes');
@@ -83,6 +84,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/auth', protectedRoutes);
 app.use('/api', postRoutes);
 app.use('/api', commentRoutes);
+
+// Swagger docs route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 module.exports = app;

@@ -55,7 +55,7 @@ exports.updateComment = async (req, res, next) => {
 	try {
 		const getComment = await Comment.findById(req.params.id);
 
-		if(!getComment || getComment.length === 0) {
+		if(!getComment) {
 			return res.status(404).json({ message: 'Comment not found'});
 		}
 
@@ -74,7 +74,16 @@ exports.updateComment = async (req, res, next) => {
 			getComment.comment = comment;
 
 		await getComment.save();
-		res.status(200).json(getComment);
+		
+		// return updated comment
+	    res.status(200).json({
+	      _id: getComment._id,
+	      comment: getComment.comment,
+	      post: getComment.post,
+	      user: getComment.user,
+	      createdAt: getComment.createdAt,
+	      updatedAt: getComment.updatedAt,
+	    });
 
 	} catch (err) {
 		res.status(500).json({ message: err.message });
