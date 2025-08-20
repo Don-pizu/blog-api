@@ -8,9 +8,9 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Fintech Dashboard API',
+      title: 'Blog api',
       version: '1.0.0',
-      description: 'API documentation for user transactions, login, and dashboard',
+      description: 'API documentation for user registration, login, blog post and comment',
     },
     servers: [
       {
