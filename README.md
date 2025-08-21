@@ -93,3 +93,5 @@ git commit -m "feat: Blog api with jest, swagger amd updated README"
 git branch -M main
 git remote add origin https://github.com/Don-pizu/blog-api.git
 git push -u origin main
+
+git commit -m "feat: Updated swagger for deployment testing and commentRoute"

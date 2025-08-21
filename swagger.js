@@ -14,7 +14,12 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000/api',
+        url: 'http://localhost:5000/api', // for local development
+        description: 'Local server',
+      },
+      {
+        url: 'https://blog-api-4zax.onrender.com/api', // for Render deployment
+        description: 'Production server',
       },
     ],
     components: {
